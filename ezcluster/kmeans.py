@@ -46,15 +46,15 @@ class Kmeans(Base):
                         break
         return self.best_k
 
-    def save_model(self, filename = 'ezcluster_files/ezc.pkl'):
+    def save_instance(self, filename = 'ezcluster_files/ezc.pkl'):
         if '/' in filename:
             folder, name = filename.split('/')
             if not os.path.exists(folder):
                 os.makedirs(folder)
-        super().save_model(filename)
+        super().save_instance(filename)
 
-    def load_model(self, filename = 'ezcluster_files/ezc.pkl'):
-        ezc = super().load_model(filename)
+    def load_instance(self, filename = 'ezcluster_files/ezc.pkl'):
+        ezc = super().load_instance(filename)
         return ezc
 
     def write_csv(self, filename = 'ezcluster_files/data.csv'):

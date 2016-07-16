@@ -23,7 +23,7 @@ print("Optimal number of clusters: %s" % num_of_clusters)
 
 # save instance
 # model is saved to ezcluster_files/ezc.pkl by default
-ezc.save_model()
+ezc.save_instance()
 
 # save labeled dataset to csv
 # dataframe is saved to ezcluster_files/data.csv by default

@@ -9,10 +9,10 @@ class Base:
             dataset.drop(id_col, axis = 1, inplace = True)
         self.original_df = dataset
 
-    def save_model(self, filename):
+    def save_instance(self, filename):
         joblib.dump(self, filename)
 
-    def load_model(self, filename):
+    def load_instance(self, filename):
         ezc = joblib.load(filename)
         return ezc
 

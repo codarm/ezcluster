@@ -42,10 +42,8 @@ Loads the previous saved ezcluster instance from file.
 Saves labeled dataframe to csv file, in ezcluster_files/ unless otherwise specified.
 
 ## Example
+Import your packages and load the iris dataset in a pandas dataframe.
 ```python
-import pandas as pd
-import ezcluster
-
 # load the iris dataset
 import pandas as pd
 import ezcluster
@@ -53,7 +51,9 @@ import ezcluster
 iris = pd.read_csv('https://raw.githubusercontent.com/thisisandreeeee/ezcluster/master/iris.csv')
 species = iris['species']
 iris.drop('species', axis = 1, inplace = True)
+```
 
+```python
 # initialize the kmeans class with a pandas dataframe, and indicate the categorical or id columns
 ezc = ezcluster.Kmeans(iris, categorical_cols = None, id_col = None)
 
@@ -67,7 +67,7 @@ ezc.plot()
 model = ezc.fit(n_clusters = num_of_clusters)
 
 # save instance
-ezc.save_model()
+ezc.save_instance()
 
 # save labeled dataset to csv
 ezc.write_csv()
