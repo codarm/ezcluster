@@ -88,7 +88,7 @@ setup(
     install_requires=requirements,
     license="MIT",
     zip_safe=False,
-    keywords=['kmeans', 'clustering', 'gap statistic'],
+    keywords=['kmeans', 'clustering', 'gap statistic', 'unsupervised learning', 'machine learning'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
