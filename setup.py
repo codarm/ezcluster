@@ -74,7 +74,7 @@ run("git push --tags", shell = True)
 setup(
     name='ezcluster',
     version=get_version(package),
-    description='A simple, elegant collection of Python API wrappers',
+    description='Evaluating the optimal number of clusters for KMeans clustering using the gap statistic',
     long_description=readme,
     author=get_author(package),
     author_email=get_email(package),
