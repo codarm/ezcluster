@@ -42,12 +42,12 @@ Loads the previous saved ezcluster instance from file.
 Saves labeled dataframe to csv file, in ezcluster_files/ unless otherwise specified.
 
 ## Example
-Import your packages and load the iris dataset in a pandas dataframe.
 ```python
 # load the iris dataset
 import pandas as pd
 import ezcluster
 
+# import your packages and load the iris dataset in a pandas dataframe.
 iris = pd.read_csv('https://raw.githubusercontent.com/thisisandreeeee/ezcluster/master/iris.csv')
 species = iris['species']
 iris.drop('species', axis = 1, inplace = True)
