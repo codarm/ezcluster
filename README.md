@@ -1,6 +1,9 @@
 # ezcluster
 Ezcluster implements simple ways of finding the optimal number of clusters for various unsupervised learning methods, such as [K-Means](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html). Determining the best number of clusters is a tricky task, which ezcluster aims to simplify through use of criterions such as the gap statistic, as proposed in the paper from [Data Science Lab](https://datasciencelab.wordpress.com/2013/12/27/finding-the-k-in-k-means-clustering/).
 
+Install ezcluster from pypi:
+`pip install ezcluster`
+
 ## Example
 ```python
 import pandas as pd
