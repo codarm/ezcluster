@@ -23,11 +23,8 @@ class Kmeans(Base):
         self.best_k = None
         self.labels = pd.Series(name = 'labels')
 
-    def fit(self, min_k=1, max_k=10):
-        # TODO: update kmeans default settings
-        kmeans = KMeans().fit(self.processed_df)
-        self.gaps, self.gaps_with_error = self._gap_statistic(
-            self.processed_df, min_k, max_k)
+    def fit(self, n_clusters = 8):
+        kmeans = KMeans(n_clusters = n_clusters).fit(self.processed_df)
         self.labels = pd.Series(data = kmeans.labels_, name = 'labels')
 
     def plot(self, save_loc = 'ezcluster_files/'):
@@ -36,17 +33,17 @@ class Kmeans(Base):
         self._plot_elbow(self.gaps, save_loc)
         self._plot_diff(self.gaps_with_error, save_loc)
 
-    def optimal_k(self):
+    def optimal_k(self, min_k=1, max_k=10, num_iters = 10):
         if not self.best_k:
-            if not self.gaps_with_error.empty:
-                if self.gaps_with_error.iloc[0] < 0:
-                    for i, val in self.gaps_with_error.iteritems():
-                        if val > 0:
-                            k = i
-                            self.best_k = i
-                            break
-            else:
-                print("Run the fit() function first")
+            self.gaps, self.gaps_with_error = self._gap_statistic(
+                self.processed_df, min_k, max_k, num_iters)
+            if self.gaps_with_error.iloc[0] < 0:
+                for i, val in self.gaps_with_error.iteritems():
+                    if val > 0:
+                        k = i
+                        self.best_k = i
+                        break
+        print(self.gaps_with_error)
         return self.best_k
 
     def save_model(self, filename = 'ezcluster_files/ezc.pkl'):
@@ -93,8 +90,7 @@ class Kmeans(Base):
         plt.savefig(os.path.join(save_loc, "gaps_with_error.png"))
         plt.close()
 
-    def _gap_statistic(self, df, min_k, max_k):
-        num_iters = 10
+    def _gap_statistic(self, df, min_k, max_k, num_iters):
         k_range = range(min_k, max_k + 1)
         def get_rand_data(col):
             rng = col.max() - col.min()
