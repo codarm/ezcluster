@@ -26,6 +26,7 @@ class Kmeans(Base):
     def fit(self, n_clusters = 8):
         kmeans = KMeans(n_clusters = n_clusters).fit(self.processed_df)
         self.labels = pd.Series(data = kmeans.labels_, name = 'labels')
+        return kmeans
 
     def plot(self, save_loc = 'ezcluster_files/'):
         if not os.path.exists(save_loc):
@@ -43,7 +44,6 @@ class Kmeans(Base):
                         k = i
                         self.best_k = i
                         break
-        print(self.gaps_with_error)
         return self.best_k
 
     def save_model(self, filename = 'ezcluster_files/ezc.pkl'):
