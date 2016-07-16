@@ -8,6 +8,7 @@ pip install ezcluster
 
 ## Plots
 ![alt text](https://github.com/thisisandreeeee/ezcluster/blob/master/gaps_with_error.png "Optimal K")
+
 The optimal number of K can be found in the above plot where the y-axis first becomes positive, as indicated in the above paper.
 
 ## Example
