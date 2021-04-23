@@ -1,6 +1,10 @@
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder, Imputer, StandardScaler
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.impute import SimpleImputer
+
 from collections import Counter
+
+imputer = SimpleImputer(strategy=‘median’)
 
 def drop_missing(df):
     df = df.dropna()
